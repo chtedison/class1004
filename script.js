@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
 
         config: {
-            GAS_URL: "https://script.google.com/macros/s/AKfycbyVopOYiIRxaFP6eU-4Eunmx3TidHvY0sFwJmV8XwDp0SYXhDxqq4RNpWmJlJdpM5OjNA/exec",
+            GAS_URL: "https://script.google.com/macros/s/AKfycbya1Dz_6yxWWPxtO92qred-qoR5qUaRcntTXwtmK6tvO-rX6yUUfOB_MAEJxS69QQEpaA/exec",
         },
 
         elements: {
