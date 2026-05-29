@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>預約會議室 - 服務大樓405</title>
+    <link rel="stylesheet" href="styles.css?v=1.0">
+</head>
+
+<body>
+    <header>
+        <h1>預約會議室</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">首頁</a></li>
+                <li><a href="reservation405.html">預約會議室</a></li>
+                <li><a href="cancel.html">查詢/預約流程</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <!-- Reservation Form Section -->
+            <div class="reservation-form">
+                <h2>預約會議室 - 服務大樓405</h2>
+                <form id="reservationForm">
+                    <label for="unit">申請單位</label>
+                    <input type="text" id="unit" name="unit" required><br>
+
+                    <label for="meetingName">會議名稱</label>
+                    <input type="text" id="meetingName" name="meetingName" required><br>
+
+                    <label for="name">姓名</label>
+                    <input type="text" id="name" name="name" required><br>
+
+                    <label for="email">電子郵件</label>
+                    <input type="email" id="email" name="email" required><br>
+
+                    <label for="date">預約日期</label>
+                    <input type="date" id="date" name="date" required><br>
+
+                    <label for="time">預約時間 (午休 12:30-13:30 不開放) </label>
+                    <select id="time" name="time" required>
+                        <option value="">請選擇時間</option>
+                        <option value="09:00">09:00</option>
+                        <option value="09:30">09:30</option>
+                        <option value="10:00">10:00</option>
+                        <option value="10:30">10:30</option>
+                        <option value="11:00">11:00</option>
+                        <option value="11:30">11:30</option>
+                        <option value="12:00">12:00</option>
+                        <option value="13:30">13:30</option>
+                        <option value="14:00">14:00</option>
+                        <option value="14:30">14:30</option>
+                        <option value="15:00">15:00</option>
+                        <option value="15:30">15:30</option>
+                        <option value="16:00">16:00</option>
+                        <option value="16:30">16:30</option>
+                    </select>
+
+                    <label for="duration">預約時長 (小時)</label><br>
+                    <select id="duration" name="duration" required>
+                        <option value="0.5">0.5 小時</option>
+                        <option value="1">1 小時</option>
+                        <option value="1.5">1.5 小時</option>
+                        <option value="2">2 小時</option>
+                        <option value="2.5">2.5 小時</option>
+                        <option value="3">3 小時</option>
+                        <option value="3.5">3.5 小時</option>
+                        <option value="4">4 小時</option>
+                    </select>
+
+                    <div id="reservationTime"></div>
+
+                    <button type="submit">確認預約</button>
+                </form>
+            </div>
+
+            <!-- Calendar Section -->
+            <div class="calendar">
+                <h2>當月行事曆</h2>
+                <div class="calendar-controls">
+                    <label for="yearSelect">選擇年份：</label>
+                    <select id="yearSelect"></select>
+                    <label for="monthSelect">選擇月份：</label>
+                    <select id="monthSelect">
+                        <option value="0">一月</option>
+                        <option value="1">二月</option>
+                        <option value="2">三月</option>
+                        <option value="3">四月</option>
+                        <option value="4">五月</option>
+                        <option value="5">六月</option>
+                        <option value="6">七月</option>
+                        <option value="7">八月</option>
+                        <option value="8">九月</option>
+                        <option value="9">十月</option>
+                        <option value="10">十一月</option>
+                        <option value="11">十二月</option>
+                    </select>
+                </div>
+                <div id="calendar">
+                    <!-- 行事曆內容將由 JavaScript 動態生成 -->
+                </div>
+                <div class="reserved-slots-container">
+                    <h3>點擊日期查看已預約時段</h3>
+                    <div id="reservedSlots"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+
+    <footer>
+        <p>© 2025 會議室預約系統。保留所有權利。</p>
+    </footer>
+</body>
+
+</html>

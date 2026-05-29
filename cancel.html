@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>取消預約 - 會議室預約系統</title>
+    <link rel="stylesheet" href="styles.css?v=1.0">
+</head>
+
+<body>
+    <header>
+        <h1>會議室預約系統</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">首頁</a></li>
+                <li><a href="reservation405.html">預約會議室</a></li>
+                <li><a href="cancel.html">查詢/取消預約</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="cancel-reservation-page">
+                <h2>查詢與取消預約</h2>
+                <form id="cancelForm">
+                    <label for="cancelEmailInput">請輸入您的電子郵件以查詢或取消預約：</label>
+                    <input type="email" id="cancelEmailInput" name="email" required>
+                    <button type="submit">查詢</button>
+                </form>
+                <div id="userReservations">
+                    <!-- 查詢結果將由 JavaScript 動態生成 -->
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>© 2025 會議室預約系統。保留所有權利。</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

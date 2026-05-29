@@ -1,0 +1,535 @@
+/* ==========================================================================
+   1. 全域與基本設定 (Global & Base)
+   ========================================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f7f6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+}
+
+h2 {
+    color: #2c3e50;
+    border-bottom: 3px solid #1abc9c;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-top: 20px;
+    color: #34495e;
+    font-size: 1.2em;
+}
+
+a {
+    color: #1abc9c;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   2. 佈局 (Layout)
+   ========================================================================== */
+header {
+    background-color: #2c3e50;
+    color: #f4f7f6;
+    padding: 15px 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 10px 0 0 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #f4f7f6;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #f1d524;
+}
+
+/* --- 頁腳 --- */
+footer {
+    background-color: #34495e;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+/* --- 主要容器 --- */
+.container {
+    display: flex;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 10px auto;
+    /* 允許換行 */
+}
+
+/* ==========================================================================
+   3. 元件 (Components)
+   ========================================================================== */
+
+/* --- 3.1 表單 (Forms) --- */
+.reservation-form,
+.cancel-reservation-page {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 400px;
+    flex: 1;
+}
+
+/* --- 取消預約頁面專用樣式 --- */
+.cancel-reservation-page {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/* 修正：減少群組間距，使表單更緊湊 */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    color: #34495e;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+/* --- 表單元素 --- */
+label {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #34495e;
+}
+
+/* 輸入框與下拉選單的通用樣式 */
+input[type="text"],
+input[type="email"],
+input[type="date"]{
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 1em;
+    background-color: #fff;
+}
+
+select {
+    /* 通用樣式 */
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 1em;
+    background-color: #fff;
+
+    /* 自訂外觀 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2334495e' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+    padding-right: 40px; /* 增加右側內邊距，避免文字與箭頭重疊 */
+}
+
+input:focus,
+select:focus {
+    border-color: #1abc9c;
+    outline: none;
+    box-shadow: 0 0 5px rgba(26, 188, 156, 0.4);
+}
+
+/* --- 日期輸入框的特定樣式 --- */
+input[type="date"] {
+    position: relative;
+}
+
+/* 隱藏原生日期圖示 (在支援的瀏覽器中) */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#reservationTime {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #1c7343;
+    min-height: 1.2em;
+}
+
+/* --- 3.2 按鈕 (Buttons) --- */
+button {
+    background-color: #1abc9c;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1em;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #16a085;
+    transform: translateY(-2px);
+}
+
+#userReservations .reservation-item button {
+    width: auto;
+    /* 按鈕寬度自動 */
+    padding: 8px 15px;
+    background-color: #e74c3c;
+    font-size: 0.9em;
+}
+
+#userReservations .reservation-item button:hover {
+    background-color: #c0392b;
+}
+
+/* --- 行事曆樣式 --- */
+.calendar {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.calendar-controls {
+    display: flex;
+    /* 新增：確保控制項在一行內不換行 */
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.calendar-controls label {
+    font-weight: normal;
+    flex-shrink: 0;
+}
+
+.calendar-controls select {
+    min-width: 120px;
+}
+
+/* 使用更高權重的選擇器來確保樣式被應用 */
+.calendar #calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+/* 將星期標頭和日期的通用樣式分開 */
+.calendar #calendar .weekdays,
+.calendar #calendar .day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 50%;
+}
+
+/* 星期標頭 (一、二、三...) 的獨立樣式 */
+.calendar #calendar .weekdays {
+    font-weight: bold;
+    color: #34495e;
+    height: 48px;
+}
+
+/* 日期 (數字) 的獨立樣式 */
+.calendar #calendar .day {
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    font-size: 0.9em;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1; /* 確保每個日期都是正方形 */
+    margin: 0 auto;
+}
+
+.calendar #calendar .day:hover {
+    background-color: #ecf0f1;
+    color: #16a085;
+    border-color: #1abc9c;
+}
+
+/* 新增：讓空白日期不可點擊 */
+.calendar #calendar .day.empty {
+    background-color: transparent;
+    cursor: default;
+    pointer-events: none;
+}
+
+.calendar #calendar .day.empty:hover {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.calendar #calendar .day.booked {
+    background-color: #e74c3c;
+    color: white;
+    font-weight: bold;
+}
+
+.calendar #calendar .day.booked:hover {
+    background-color: #c0392b;
+    transform: none;
+}
+
+/* --- 3.4 預約列表 (Reservation Lists) --- */
+#reservedSlots p,
+#userReservations .reservation-item{
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+#reservedSlots p {
+    background: #ecf0f1;
+    border-left: 4px solid #3498db;
+}
+
+#userReservations .reservation-item {
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+#userReservations .reservation-item p {
+    margin: 0;
+    font-weight: 500;
+}
+
+#cancelMessage {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* --- 3.5 首頁區塊 (Homepage Sections) --- */
+.hero {
+    background-image: url('background.png');
+    /* 替換為你的背景圖片 */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.section {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.section h2 {
+    text-align: center;
+}
+
+.room-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.room {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    width: 320px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.room .button {
+    display: inline-block;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: white;
+    justify-content: center;
+    background-color: #1abc9c;
+    width: 100%;
+}
+.room .button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.flow ol {
+    list-style-type: none;
+    counter-reset: step-counter;
+    padding-left: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.flow li {
+    counter-increment: step-counter;
+    margin: 10px;
+    position: relative;
+    padding-top: 60px;
+    width: 150px;
+    text-align: center;
+}
+
+.flow li::before {
+    content: counter(step-counter);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 45px;
+    background-color: #1abc9c;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.4em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   新增區塊：禁用狀態的視覺回饋 (Disabled State Visual Feedback)
+   ========================================================================== */
+/* 當任何輸入框或按鈕被禁用時的通用樣式 */
+input:disabled,
+button:disabled,
+select:disabled {
+    /* 1. 滑鼠移過去時，顯示「禁止」圖示 */
+    cursor: not-allowed;
+    
+    /* 2. 讓元素看起來有點半透明、褪色，是表示「不可用」的常見手法 */
+    opacity: 0.6;
+}
+
+/* 3. 特別針對被禁用的按鈕，改變其背景顏色為灰色 */
+button:disabled,
+button:disabled:hover { /* 同時設定 hover 狀態，確保滑鼠移過去時顏色不會變回去 */
+    background-color: #bdc3c7; /* 一個中性的灰色 */
+    transform: none; /* 取消 hover 時的上浮效果 */
+    box-shadow: none; /* 取消陰影 */
+}
+
+
+/* ==========================================================================
+   4. 響應式設計 (Media Queries)
+   ========================================================================== */
+
+/* 當螢幕寬度小於等於 768px 時 (通常為平板或手機) */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .calendar {
+        order: 1;
+        /* 在手機版上，將行事曆移到最上面 */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 15px;
+    }
+    nav ul li {
+        margin: 0 8px;
+    }
+    main {
+        padding: 10px;
+    }
+    .reservation-form,
+    .calendar,
+    .cancel-reservation-page {
+        padding: 20px;
+    }
+    .day {
+        width: 40px;
+        height: 40px;
+        font-size: 1em;
+    }
+    .weekdays {
+        height: 40px;
+    }
+    .calendar-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

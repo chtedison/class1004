@@ -1,0 +1,49 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>預約管理系統</title>
+</head>
+<body>
+    <h1>預約管理系統</h1>
+
+    <h2>匯出預約資料</h2>
+    <a href="/export">下載預約資料 (CSV)</a>
+
+    <h2>匯入預約資料</h2>
+    <form action="/import" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">匯入</button>
+    </form>
+
+    <h2>修改預約資料</h2>
+    <form id="editReservationForm">
+        <label for="email">電子郵件地址</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="newDate">新日期</label><br>
+        <input type="date" id="newDate" name="newDate" required><br><br>
+
+        <label for="newTime">新時間</label><br>
+        <input type="time" id="newTime" name="newTime" required><br><br>
+
+        <button type="submit">修改預約</button>
+    </form>
+
+    <script>
+        document.getElementById('editReservationForm').onsubmit = function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch('/edit-reservation', {
+                method: 'POST',
+                body: new URLSearchParams(new FormData(this))
+            })
+            .then(response => response.text())
+            .then(data => alert(data))
+            .catch(error => console.error('Error:', error));
+        };
+    </script>
+</body>
+</html>
